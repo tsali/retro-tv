@@ -1,0 +1,34 @@
+[Unit]
+Description=Weather Channel Renderer (Xvfb + Chromium)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=retro
+Group=retro
+
+Environment=HOME=/home/retro
+Environment=DISPLAY=:1
+
+# Wait until DNS + network are actually usable
+ExecStartPre=/bin/bash -c 'until getent hosts weatherstar.netbymatt.com >/dev/null 2>&1; do sleep 2; done'
+
+# Renderer (now in its final location)
+ExecStart=/opt/weather/weather-kiosk.sh
+
+Restart=always
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+ReadWritePaths=/home/retro
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

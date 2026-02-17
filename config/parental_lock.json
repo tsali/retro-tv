@@ -1,0 +1,6 @@
+{
+  "pin": "42069",
+  "locked_channels": ["999"],
+  "auto_lock_channels": ["999"],
+  "always_mute_channels": ["999"]
+}

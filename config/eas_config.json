@@ -1,0 +1,25 @@
+{
+  "enabled": true,
+  "zip_code": "32526",
+  "latitude": 30.4774607,
+  "longitude": -87.3138657,
+  "poll_interval_seconds": 45,
+  "alert_types": {
+    "TOR": true,
+    "SVR": true,
+    "FFW": true,
+    "EWW": true,
+    "SMW": true,
+    "SPS": true,
+    "WSW": true,
+    "HUW": true,
+    "TSW": true,
+    "FRW": true,
+    "CFW": true,
+    "EAN": true,
+    "CDW": true
+  },
+  "exempt_channels": [
+    "WEATHER"
+  ]
+}

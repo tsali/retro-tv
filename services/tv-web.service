@@ -1,0 +1,14 @@
+[Unit]
+Description=Retro TV Web Control
+After=network.target tv.service
+
+[Service]
+Type=simple
+User=retro
+WorkingDirectory=/home/retro
+ExecStart=/usr/bin/python3 /home/retro/tv-web-control.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

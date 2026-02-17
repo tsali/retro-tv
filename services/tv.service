@@ -1,0 +1,20 @@
+[Unit]
+Description=Retro TV (Epoch Linear Channel)
+After=network.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=retro
+WorkingDirectory=/home/retro
+ExecStartPre=/usr/bin/udevadm settle
+ExecStart=/home/retro/start_tv.sh
+Restart=always
+RestartSec=2
+
+# Keep systemd from dumping mpv progress spam into your tv.log
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

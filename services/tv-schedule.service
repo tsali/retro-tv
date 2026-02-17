@@ -1,0 +1,19 @@
+[Unit]
+Description=Retro TV Schedule Web Interface
+After=network.target
+
+[Service]
+Type=simple
+User=retro
+Group=retro
+WorkingDirectory=/home/retro
+Environment=HOME=/home/retro
+ExecStart=/usr/bin/python3 /home/retro/bin/schedule_web.py
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

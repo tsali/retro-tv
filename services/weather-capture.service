@@ -1,0 +1,33 @@
+[Unit]
+Description=Weather Capture (Xvfb :1 -> UDP stream for mpv)
+After=weather-renderer.service network-online.target
+Wants=weather-renderer.service network-online.target
+
+[Service]
+Type=simple
+
+# ffmpeg only needs to read Xvfb; run as same user to avoid X access issues
+User=retro
+Group=retro
+
+Environment=HOME=/home/retro
+Environment=DISPLAY=:1
+
+# Wait until DNS works (same guard as renderer)
+ExecStartPre=/bin/bash -c 'until getent hosts weatherstar.netbymatt.com >/dev/null 2>&1; do sleep 2; done'
+
+ExecStart=/opt/weather/weather-capture.sh
+Restart=always
+RestartSec=2
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+ReadWritePaths=/home/retro
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

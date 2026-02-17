@@ -1,0 +1,44 @@
+# Runtime state
+state/schedule_state.json
+state/*.pid
+state/*.lock
+
+# Logs
+*.log
+*.log.old
+
+# Media content (large files)
+media/**/*.mp4
+media/**/*.mkv
+media/**/*.avi
+media/**/*.ts
+media/**/*.mp3
+media/**/*.wav
+media/**/*.flac
+media/**/*.m4a
+# Keep images tracked
+!media/images/RAITEST.png
+!media/images/WEATHER.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Backups
+*.backup*
+*.old
+backups/
+
+# System/editor
+.claude/
+.tv_cache/
+.tv_state/
+.state/
+projects/
+*.swp
+*.swo
+*~
+
+# Credentials
+youtube_cookies.txt

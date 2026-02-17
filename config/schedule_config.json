@@ -1,0 +1,628 @@
+{
+  "shows": [
+    {
+      "id": "DINOSAUCERS",
+      "title": "Dinosaucers",
+      "path": "/home/retro/media/cartoons/dinosaucers",
+      "episodes": 65,
+      "runtime_min": 22,
+      "station": "CARTOONS"
+    },
+    {
+      "id": "PACMAN",
+      "title": "Pac-Man (1982)",
+      "path": "/home/retro/media/cartoons/PAC-MAN1982",
+      "episodes": 22,
+      "runtime_min": 22,
+      "station": "CARTOONS"
+    },
+    {
+      "id": "SMBSS",
+      "title": "Super Mario Bros Super Show",
+      "path": "/home/retro/media/cartoons/SMBSS",
+      "episodes": 52,
+      "runtime_min": 22,
+      "station": "CARTOONS"
+    },
+    {
+      "id": "TMNT",
+      "title": "Teenage Mutant Ninja Turtles",
+      "path": "/home/retro/media/cartoons/TMNT",
+      "episodes": 192,
+      "runtime_min": 22,
+      "station": "CARTOONS"
+    },
+    {
+      "id": "DS9",
+      "title": "Star Trek: Deep Space Nine",
+      "path": "/home/retro/media/scifi/DS9",
+      "episodes": 173,
+      "runtime_min": 45,
+      "station": "SCIFI"
+    },
+    {
+      "id": "LEXX",
+      "title": "LEXX",
+      "path": "/home/retro/media/scifi/LEXX",
+      "episodes": 61,
+      "runtime_min": 45,
+      "station": "SCIFI"
+    },
+    {
+      "id": "SG1",
+      "title": "Stargate SG-1",
+      "path": "/home/retro/media/scifi/SG1",
+      "episodes": 37,
+      "runtime_min": 43,
+      "station": "SCIFI"
+    },
+    {
+      "id": "TRAINING",
+      "title": "Training Films",
+      "path": "/home/retro/media/training",
+      "episodes": 12,
+      "runtime_min": 15,
+      "station": "TRAINING"
+    },
+    {
+      "id": "ADULT",
+      "title": "Adult",
+      "path": "/home/retro/media/adult",
+      "episodes": 33,
+      "runtime_min": 72,
+      "station": "ADULT"
+    },
+    {
+      "id": "SIGNOFF",
+      "title": "Sign Off",
+      "path": "/home/retro/media/OFFAIR.mp4",
+      "episodes": 1,
+      "runtime_min": 1,
+      "station": ""
+    },
+    {
+      "id": "SIGNON",
+      "title": "Sign On",
+      "path": "/home/retro/media/OFFAIR.mp4",
+      "episodes": 1,
+      "runtime_min": 1,
+      "station": ""
+    }
+  ],
+  "default_schedule": {
+    "monday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "TMNT"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "08:00",
+          "end": "12:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "20:00",
+          "end": "00:00",
+          "show_id": "DS9"
+        }
+      ],
+      "TRAINING": [
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "show_id": "TRAINING"
+        },
+        {
+          "start": "13:00",
+          "end": "17:00",
+          "show_id": "TRAINING"
+        }
+      ]
+    },
+    "tuesday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "SMBSS"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "08:00",
+          "end": "12:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "20:00",
+          "end": "00:00",
+          "show_id": "LEXX"
+        }
+      ],
+      "TRAINING": [
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "show_id": "TRAINING"
+        },
+        {
+          "start": "13:00",
+          "end": "17:00",
+          "show_id": "TRAINING"
+        }
+      ]
+    },
+    "wednesday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "PACMAN"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "08:00",
+          "end": "12:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "20:00",
+          "end": "00:00",
+          "show_id": "DS9"
+        }
+      ],
+      "TRAINING": [
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "show_id": "TRAINING"
+        },
+        {
+          "start": "13:00",
+          "end": "17:00",
+          "show_id": "TRAINING"
+        }
+      ]
+    },
+    "thursday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "DINOSAUCERS"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "08:00",
+          "end": "12:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "20:00",
+          "end": "00:00",
+          "show_id": "LEXX"
+        }
+      ],
+      "TRAINING": [
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "show_id": "TRAINING"
+        },
+        {
+          "start": "13:00",
+          "end": "17:00",
+          "show_id": "TRAINING"
+        }
+      ]
+    },
+    "friday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "TMNT"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "08:00",
+          "end": "12:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "18:00",
+          "end": "00:00",
+          "show_id": "DS9"
+        }
+      ],
+      "TRAINING": [
+        {
+          "start": "09:00",
+          "end": "12:00",
+          "show_id": "TRAINING"
+        }
+      ]
+    },
+    "saturday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "PACMAN"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "10:00",
+          "end": "14:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "18:00",
+          "end": "00:00",
+          "show_id": "DS9"
+        }
+      ]
+    },
+    "sunday": {
+      "CARTOONS": [
+        {
+          "start": "06:00",
+          "end": "08:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "08:00",
+          "end": "10:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "10:00",
+          "end": "12:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "12:00",
+          "end": "14:00",
+          "show_id": "PACMAN"
+        },
+        {
+          "start": "14:00",
+          "end": "16:00",
+          "show_id": "SMBSS"
+        },
+        {
+          "start": "16:00",
+          "end": "18:00",
+          "show_id": "DINOSAUCERS"
+        },
+        {
+          "start": "18:00",
+          "end": "20:00",
+          "show_id": "TMNT"
+        },
+        {
+          "start": "20:00",
+          "end": "22:00",
+          "show_id": "PACMAN"
+        }
+      ],
+      "SCIFI": [
+        {
+          "start": "10:00",
+          "end": "14:00",
+          "show_id": "LEXX"
+        },
+        {
+          "start": "14:00",
+          "end": "18:00",
+          "show_id": "DS9"
+        },
+        {
+          "start": "18:00",
+          "end": "00:00",
+          "show_id": "LEXX"
+        }
+      ]
+    }
+  },
+  "channels": [
+    {
+      "number": 100,
+      "name": "MTV",
+      "station": "MTV"
+    }
+  ]
+}
