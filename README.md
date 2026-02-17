@@ -52,8 +52,6 @@ The system runs a single **mpv** media player instance in fullscreen, controlled
 
 **MTV Mode** — Dedicated music video channels (MTV, MTV1975–MTV1995) with epoch-shuffled playback and metadata overlays showing artist, title, album, and year in classic MTV lower-third style.
 
-**YouTube Live Streams** — Configure any channel to pull a YouTube live stream via yt-dlp.
-
 **Weather Channel** — Dedicated weather channel rendering via Chromium screenshots with background music.
 
 **Parental Controls** — Lock channels behind a PIN code. Locked channels display scrambled video (hue rotation, noise, RGB shift) with muted audio. Enter the PIN via the remote to unlock.
@@ -69,7 +67,7 @@ The system runs a single **mpv** media player instance in fullscreen, controlled
 - **Raspberry Pi 4 Model B** (recommended; other models/Linux systems may work)
 - HDMI display
 - Storage for media content (external drive or large SD card recommended)
-- Network connection (required for EAS alerts and YouTube streams; optional otherwise)
+- Network connection (required for EAS alerts; optional otherwise)
 
 ### System Packages
 
@@ -83,7 +81,6 @@ sudo apt install -y \
   python3-pip \
   python3-flask \
   python3-pil \
-  yt-dlp \
   pulseaudio \
   alsa-utils \
   jq
@@ -223,15 +220,6 @@ Set your coordinates and enable/disable specific alert types (tornado, severe th
   "locked_channels": ["999"],
   "auto_lock_channels": ["999"],
   "always_mute_channels": ["999"]
-}
-```
-
-### YouTube Channels (`config/youtube_channels.json`)
-
-Map station names to YouTube live stream URLs:
-```json
-{
-  "LIVESTREAM": "https://www.youtube.com/watch?v=XXXXX"
 }
 ```
 
