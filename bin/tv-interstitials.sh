@@ -202,9 +202,15 @@ start_eof_watcher() {
       if [[ "$eof" == "true" || "$idle" == "true" ]]; then
 
         if [[ "$state" == "content" ]]; then
-          # MTV channels: just play next random video, no interstitials
+          # EPG/WEATHER manage their own refresh — skip EOF handling
           local cur_station
           cur_station="$(current_station 2>/dev/null)"
+          if [[ "$cur_station" == "EPG" || "$cur_station" == "WEATHER" ]]; then
+            sleep 1
+            continue
+          fi
+
+          # MTV channels: just play next random video, no interstitials
           if is_mtv_channel "$cur_station" 2>/dev/null; then
             mtv_hide_overlay 2>/dev/null
             play_mtv "$cur_station" || true

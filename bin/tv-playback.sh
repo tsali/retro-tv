@@ -15,9 +15,11 @@ EPG_LAUNCHER="$BASE/start-epg-channel.sh"
 EPG_FRAME="$STATE/epg/current.png"
 EPG_PID_FILE="$STATE/epg/epg.pid"
 EPG_REFRESH_PID=""
+EPG_MUSIC_PID=""
 EPG_STAMP="$BASE/bin/epg-stamp-time.py"
 EPG_DISPLAY="$STATE/epg/display.png"
 EPG_DISPLAY_TMP="$STATE/epg/display.tmp.png"
+EPG_MUSIC_DIR="$MEDIA/mp3"
 
 play_epg() {
   log "EPG → starting channel"
@@ -75,7 +77,41 @@ play_epg() {
   ) &
   EPG_REFRESH_PID=$!
 
+  # Release main mpv audio device so music mpv can use HDMI
+  mpv_cmd '{ "command": ["set_property", "audio-device", "null"] }' || true
+  sleep 0.3
+
+  # Start background music (separate mpv instance, shuffled mp3s)
+  start_epg_music
+
   return 0
+}
+
+EPG_MUSIC_PIDFILE="$STATE/epg/music.pid"
+
+start_epg_music() {
+  stop_epg_music
+  if [[ -d "$EPG_MUSIC_DIR" ]]; then
+    mpv --no-video --shuffle --loop-playlist \
+        --audio-device=alsa/hdmi:CARD=vc4hdmi0,DEV=0 \
+        --audio-channels=stereo \
+        --audio-samplerate=48000 \
+        "--af=lavfi=[pan=stereo|c0=c0|c1=c0]" \
+        "$EPG_MUSIC_DIR" >/dev/null 2>&1 &
+    EPG_MUSIC_PID=$!
+    echo "$EPG_MUSIC_PID" > "$EPG_MUSIC_PIDFILE"
+    log "EPG: background music started (PID $EPG_MUSIC_PID)"
+  fi
+}
+
+stop_epg_music() {
+  # Kill any EPG background music mpv instances
+  pkill -f 'mpv --no-video --shuffle --loop-playlist' 2>/dev/null && \
+    log "EPG: background music stopped" || true
+  rm -f "$EPG_MUSIC_PIDFILE"
+  EPG_MUSIC_PID=""
+  # Reclaim HDMI audio for main mpv
+  mpv_cmd '{ "command": ["set_property", "audio-device", "alsa/hdmi:CARD=vc4hdmi0,DEV=0"] }' || true
 }
 
 stop_epg_refresh() {
@@ -83,6 +119,7 @@ stop_epg_refresh() {
     kill "$EPG_REFRESH_PID" 2>/dev/null
     EPG_REFRESH_PID=""
   fi
+  stop_epg_music
 }
 
 ###############################################################################
