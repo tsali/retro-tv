@@ -9,6 +9,83 @@ index_file() {
 }
 
 ###############################################################################
+# EPG
+###############################################################################
+EPG_LAUNCHER="$BASE/start-epg-channel.sh"
+EPG_FRAME="$STATE/epg/current.png"
+EPG_PID_FILE="$STATE/epg/epg.pid"
+EPG_REFRESH_PID=""
+EPG_STAMP="$BASE/bin/epg-stamp-time.py"
+EPG_DISPLAY="$STATE/epg/display.png"
+EPG_DISPLAY_TMP="$STATE/epg/display.tmp.png"
+
+play_epg() {
+  log "EPG → starting channel"
+
+  # Start the generator daemon if not running
+  bash "$EPG_LAUNCHER" start >/dev/null 2>&1
+
+  # Wait briefly for first frame to be generated
+  local wait=0
+  while [[ ! -f "$EPG_FRAME" ]] && (( wait < 10 )); do
+    sleep 1
+    wait=$((wait + 1))
+  done
+
+  if [[ ! -f "$EPG_FRAME" ]]; then
+    log "EPG: no frame available, showing placeholder"
+    mpv_cmd '{ "command": ["loadfile", "'"$MEDIA/images/WEATHER.png"'", "replace"] }' || true
+    return 1
+  fi
+
+  # Stamp time onto first frame and load it
+  python3 "$EPG_STAMP" "$EPG_FRAME" "$EPG_DISPLAY_TMP" 2>/dev/null \
+    && mv "$EPG_DISPLAY_TMP" "$EPG_DISPLAY" \
+    && mpv_cmd '{ "command": ["loadfile", "'"$EPG_DISPLAY"'", "replace"] }' || \
+    mpv_cmd '{ "command": ["loadfile", "'"$EPG_FRAME"'", "replace"] }' || true
+  mpv_cmd '{ "command": ["set_property", "pause", false] }' || true
+
+  # Start page cycling + time stamp loop (every 10s)
+  stop_epg_refresh
+  (
+    local page=0
+    while sleep 10; do
+      local cur_station
+      cur_station="$(current_station 2>/dev/null)" || true
+      [[ "$cur_station" == "EPG" ]] || break
+
+      # Read page count
+      local page_count=1
+      [[ -f "$STATE/epg/page_count" ]] && page_count="$(cat "$STATE/epg/page_count" 2>/dev/null)" || true
+      [[ "$page_count" =~ ^[0-9]+$ ]] || page_count=1
+
+      # Cycle to next page
+      page=$(( (page + 1) % page_count ))
+      local page_file="$STATE/epg/page_${page}.png"
+      [[ -f "$page_file" ]] || page_file="$EPG_FRAME"
+
+      # Stamp current time onto page and load
+      if python3 "$EPG_STAMP" "$page_file" "$EPG_DISPLAY_TMP" 2>/dev/null \
+          && mv "$EPG_DISPLAY_TMP" "$EPG_DISPLAY"; then
+        mpv_cmd '{ "command": ["loadfile", "'"$EPG_DISPLAY"'", "replace"] }' || true
+      else
+        mpv_cmd '{ "command": ["loadfile", "'"$page_file"'", "replace"] }' || true
+      fi
+    done
+  ) &
+  EPG_REFRESH_PID=$!
+
+  return 0
+}
+
+stop_epg_refresh() {
+  if [[ -n "$EPG_REFRESH_PID" ]]; then
+    kill "$EPG_REFRESH_PID" 2>/dev/null
+    EPG_REFRESH_PID=""
+  fi
+}
+
+###############################################################################
 # WEATHER
 ###############################################################################
 play_weather() {
@@ -262,6 +339,14 @@ play_station() {
   re_lock_auto_channels 2>/dev/null || true
 
   # --- SPECIAL CHANNELS ---
+  if [[ "$station" == "EPG" ]]; then
+    play_epg
+    return 0
+  fi
+
+  # Stop EPG refresh if leaving EPG channel
+  stop_epg_refresh 2>/dev/null || true
+
   if [[ "$station" == "WEATHER" ]]; then
     play_weather
     return 0

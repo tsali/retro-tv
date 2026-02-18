@@ -19,7 +19,7 @@ should_allow_interstitials() {
   # No interstitials during EAS
   [[ -f "$STATE/eas_active_flag" ]] && return 1
   # No interstitials on special channels, MTV, or during off-air
-  [[ "$station" != "$WEATHER_CHANNEL" && "$station" != "bumpers" && "$station" != "commercials" ]] || return 1
+  [[ "$station" != "$WEATHER_CHANNEL" && "$station" != "EPG" && "$station" != "bumpers" && "$station" != "commercials" ]] || return 1
   is_mtv_channel "$station" && return 1
   # No interstitials during SIGNOFF/SIGNON
   is_offair 2>/dev/null && return 1
